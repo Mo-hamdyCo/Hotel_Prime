@@ -1,0 +1,49 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"Y9qVElJdvI\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Hotels</span>\",\"col\":12}},{\"id\":\"urtHsojmHn\",\"type\":\"card\",\"data\":{\"card_name\":\"Main\",\"col\":4}}]",
+ "creation": "2025-10-20 16:35:35.332294",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "color-rank",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Hotels",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Main",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reservation Room",
+   "link_count": 0,
+   "link_to": "Reservation Room",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2025-10-20 16:36:19.942043",
+ "modified_by": "Administrator",
+ "module": "Hotel Mange",
+ "name": "Hotels",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 2.0,
+ "shortcuts": [],
+ "title": "Hotels"
+}

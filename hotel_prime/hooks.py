@@ -5,6 +5,12 @@ app_description = "Help Hotels To Mange her WorkFlow"
 app_email = "mohamedhamdy2539@gmail.com"
 app_license = "mit"
 
+fixtures=[
+    {
+        "doctype": "Workflow",
+        "filters": [["document_type", "=", "Reservation Room"]]
+    }
+]
 # Apps
 # ------------------
 

@@ -1,0 +1,326 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:Resrev-{room}-{####}",
+ "creation": "2025-10-07 15:30:19.915409",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "main_details_section",
+  "hotel_customer",
+  "id_number",
+  "mobile_num",
+  "price_list",
+  "column_break_bpha",
+  "type_of_reservation",
+  "room",
+  "package_room",
+  "column_break_pdns",
+  "check_in",
+  "day_rate",
+  "nights",
+  "column_break_uujg",
+  "expected_check_out",
+  "reservation_status",
+  "total_nights_amount",
+  "room_details_section",
+  "number_of_beds",
+  "column_break_qwbj",
+  "view",
+  "payment_details_section",
+  "payment_status",
+  "column_break_ksvc",
+  "total_amount",
+  "column_break_utiz",
+  "outstanding",
+  "section_break_xtss",
+  "other_expense",
+  "section_break_efaz",
+  "other_service",
+  "section_break_ibci",
+  "get_advances",
+  "advances",
+  "section_break_iaj0",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "main_details_section",
+   "fieldtype": "Section Break",
+   "label": "Main Details"
+  },
+  {
+   "fieldname": "hotel_customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Hotel Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "hotel_customer.custom_id_num",
+   "fieldname": "id_number",
+   "fieldtype": "Data",
+   "label": "ID Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "hotel_customer.mobile_no",
+   "fieldname": "mobile_num",
+   "fieldtype": "Data",
+   "label": "Mobile Num",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_bpha",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "type_of_reservation",
+   "fieldtype": "Select",
+   "label": "Type OF Reservation",
+   "options": "\nSingle Room\nPackge Room"
+  },
+  {
+   "depends_on": "eval:doc.type_of_reservation=='Single Room'",
+   "fieldname": "room",
+   "fieldtype": "Link",
+   "label": "Room",
+   "link_filters": "[[\"Item\",\"custom_is_room\",\"=\",1],[\"Item\",\"is_stock_item\",\"=\",0]]",
+   "mandatory_depends_on": "eval:doc.type_of_reservation=='Single Room'",
+   "options": "Item"
+  },
+  {
+   "depends_on": "eval:doc.type_of_reservation=='Packge Room'",
+   "fieldname": "package_room",
+   "fieldtype": "Data",
+   "label": "Package Room"
+  },
+  {
+   "fieldname": "column_break_pdns",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "check_in",
+   "fieldtype": "Date",
+   "label": "Check In",
+   "reqd": 1
+  },
+  {
+   "fieldname": "day_rate",
+   "fieldtype": "Int",
+   "label": "Day Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_uujg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expected_check_out",
+   "fieldtype": "Date",
+   "label": "Expected Check Out"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "reservation_status",
+   "fieldtype": "Select",
+   "label": "Reservation Status",
+   "options": "Pending Payment\nBooked\nChecked-In\nChecked-out\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "nights",
+   "fieldtype": "Int",
+   "label": "Nights",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.type_of_reservation=='Single Room'",
+   "depends_on": "eval:doc.type_of_reservation=='Single Room'",
+   "fieldname": "room_details_section",
+   "fieldtype": "Section Break",
+   "label": "Room Details"
+  },
+  {
+   "fieldname": "number_of_beds",
+   "fieldtype": "Data",
+   "label": "Number Of Beds"
+  },
+  {
+   "fieldname": "column_break_qwbj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "view",
+   "fieldtype": "Data",
+   "label": "View"
+  },
+  {
+   "fieldname": "payment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Details"
+  },
+  {
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "label": "Payment Status",
+   "options": "\nNot Paid\nPartial Paid\nPaid\nOverPaid",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ksvc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_utiz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "outstanding",
+   "fieldtype": "Currency",
+   "label": "Outstanding",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_xtss",
+   "fieldtype": "Section Break",
+   "label": "Expenses"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "other_expense",
+   "fieldtype": "Table",
+   "label": "Other Expense",
+   "options": "Reservation Expense"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_efaz",
+   "fieldtype": "Section Break",
+   "label": "Services"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "other_service",
+   "fieldtype": "Table",
+   "label": "Other Service",
+   "options": "Reservation Service"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_ibci",
+   "fieldtype": "Section Break",
+   "label": "Advances"
+  },
+  {
+   "fieldname": "get_advances",
+   "fieldtype": "Button",
+   "label": "Get Advance",
+   "options": "get_advances"
+  },
+  {
+   "fieldname": "advances",
+   "fieldtype": "Table",
+   "label": "Advances",
+   "options": "Sales Invoice Advance"
+  },
+  {
+   "fieldname": "section_break_iaj0",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Reservation Room",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "total_nights_amount",
+   "fieldtype": "Currency",
+   "label": "Total Nights Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "price_list",
+   "fieldtype": "Link",
+   "label": "Price List",
+   "options": "Price List",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_calendar_and_gantt": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-10-23 13:20:11.677340",
+ "modified_by": "Administrator",
+ "module": "Hotel Mange",
+ "name": "Reservation Room",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Purple",
+   "custom": 1,
+   "title": "Draft"
+  },
+  {
+   "color": "Light Blue",
+   "custom": 1,
+   "title": "Pending Payment"
+  },
+  {
+   "color": "Green",
+   "custom": 1,
+   "title": "Booked"
+  },
+  {
+   "color": "Gray",
+   "custom": 1,
+   "title": "Checked-In"
+  },
+  {
+   "color": "Orange",
+   "custom": 1,
+   "title": "Checked-out"
+  },
+  {
+   "color": "Red",
+   "custom": 1,
+   "title": "Cancelled"
+  }
+ ],
+ "track_changes": 1
+}
