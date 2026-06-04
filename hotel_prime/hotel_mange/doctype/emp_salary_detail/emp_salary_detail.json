@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-21 10:29:16.293424",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "column_break_jrfl",
+  "gross_salary",
+  "section_break_kqke",
+  "salery_detl_temp",
+  "section_break_usou",
+  "salary_calcu",
+  "net_salary",
+  "section_break_bww7",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_bww7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Emp Salary Detail",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_jrfl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gross_salary",
+   "fieldtype": "Currency",
+   "label": "Gross Salary"
+  },
+  {
+   "fieldname": "section_break_kqke",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "salery_detl_temp",
+   "fieldtype": "Link",
+   "label": "Salery Detl Temp",
+   "options": "Salary Details Temp"
+  },
+  {
+   "fieldname": "section_break_usou",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "salary_calcu",
+   "fieldtype": "Table",
+   "label": "Salary Calcu",
+   "options": "Salary Details Table"
+  },
+  {
+   "fieldname": "net_salary",
+   "fieldtype": "Currency",
+   "label": "Net Salary"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-01-21 11:15:38.193155",
+ "modified_by": "Administrator",
+ "module": "Hotel Mange",
+ "name": "Emp Salary Detail",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,5 +1,7 @@
 {
  "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "format:Resrev-{room}-{####}",
  "creation": "2025-10-07 15:30:19.915409",
@@ -19,29 +21,46 @@
   "check_in",
   "day_rate",
   "nights",
+  "company",
   "column_break_uujg",
   "expected_check_out",
   "reservation_status",
   "total_nights_amount",
+  "multi_reservation_section",
+  "reservation_units",
   "room_details_section",
   "number_of_beds",
   "column_break_qwbj",
   "view",
   "payment_details_section",
   "payment_status",
+  "discount_amount",
+  "discount_reason",
   "column_break_ksvc",
   "total_amount",
-  "column_break_utiz",
   "outstanding",
+  "late_check_out_hours",
+  "late_check_out_fee",
+  "column_break_utiz",
+  "extra_guest_count",
+  "extra_guest_charge",
+  "settlement_amount",
+  "section_break_iaj0",
+  "actual_check_in_datetime",
+  "accompanying_persons",
+  "is_hourly",
+  "sales_invoice",
+  "column_break_uqdx",
+  "actual_check_out_datetime",
+  "room_history",
+  "amended_from",
   "section_break_xtss",
   "other_expense",
   "section_break_efaz",
   "other_service",
   "section_break_ibci",
   "get_advances",
-  "advances",
-  "section_break_iaj0",
-  "amended_from"
+  "advances"
  ],
  "fields": [
   {
@@ -78,20 +97,20 @@
   {
    "fieldname": "type_of_reservation",
    "fieldtype": "Select",
-   "label": "Type OF Reservation",
-   "options": "\nSingle Room\nPackge Room"
+   "label": "Booking Type",
+   "options": "\nSingle Room\nMultiple Room\nPackage"
   },
   {
    "depends_on": "eval:doc.type_of_reservation=='Single Room'",
    "fieldname": "room",
    "fieldtype": "Link",
    "label": "Room",
-   "link_filters": "[[\"Item\",\"custom_is_room\",\"=\",1],[\"Item\",\"is_stock_item\",\"=\",0]]",
+   "link_filters": "[]",
    "mandatory_depends_on": "eval:doc.type_of_reservation=='Single Room'",
-   "options": "Item"
+   "options": "Room"
   },
   {
-   "depends_on": "eval:doc.type_of_reservation=='Packge Room'",
+   "depends_on": "eval:doc.type_of_reservation=='Package'",
    "fieldname": "package_room",
    "fieldtype": "Data",
    "label": "Package Room"
@@ -101,8 +120,9 @@
    "fieldtype": "Column Break"
   },
   {
+   "description": "The system normalizes this to the standard check-in time from Reservation Settings.",
    "fieldname": "check_in",
-   "fieldtype": "Date",
+   "fieldtype": "Datetime",
    "label": "Check In",
    "reqd": 1
   },
@@ -117,16 +137,19 @@
    "fieldtype": "Column Break"
   },
   {
+   "description": "The system normalizes this to the standard check-out time from Reservation Settings.",
    "fieldname": "expected_check_out",
-   "fieldtype": "Date",
-   "label": "Expected Check Out"
+   "fieldtype": "Datetime",
+   "label": "Expected Check Out",
+   "reqd": 1
   },
   {
    "allow_on_submit": 1,
+   "default": "Draft",
    "fieldname": "reservation_status",
    "fieldtype": "Select",
    "label": "Reservation Status",
-   "options": "Pending Payment\nBooked\nChecked-In\nChecked-out\nCancelled",
+   "options": "Draft\nBooked\nChecked In\nPending Billing\nCompleted\nCancelled\nNo Show",
    "read_only": 1
   },
   {
@@ -144,6 +167,7 @@
    "label": "Room Details"
   },
   {
+   "fetch_from": "room.bed_count",
    "fieldname": "number_of_beds",
    "fieldtype": "Data",
    "label": "Number Of Beds"
@@ -153,6 +177,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "room.view",
    "fieldname": "view",
    "fieldtype": "Data",
    "label": "View"
@@ -187,6 +212,45 @@
    "fieldname": "outstanding",
    "fieldtype": "Currency",
    "label": "Outstanding",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Amount"
+  },
+  {
+   "fieldname": "discount_reason",
+   "fieldtype": "Data",
+   "label": "Discount Reason"
+  },
+  {
+   "default": "0",
+   "fieldname": "extra_guest_count",
+   "fieldtype": "Int",
+   "label": "Extra Guest Count"
+  },
+  {
+   "fieldname": "extra_guest_charge",
+   "fieldtype": "Currency",
+   "label": "Extra Guest Charge"
+  },
+  {
+   "fieldname": "settlement_amount",
+   "fieldtype": "Currency",
+   "label": "Settlement Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "late_check_out_hours",
+   "fieldtype": "Int",
+   "label": "Late Check-Out Hours",
+   "read_only": 1
+  },
+  {
+   "fieldname": "late_check_out_fee",
+   "fieldtype": "Currency",
+   "label": "Late Check-Out Fee",
    "read_only": 1
   },
   {
@@ -234,8 +298,18 @@
    "options": "Sales Invoice Advance"
   },
   {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.type_of_reservation=='Multiple Room'",
+   "fieldname": "reservation_units",
+   "fieldtype": "Table",
+   "label": "Reservation Units",
+   "options": "Reservation Unit"
+  },
+  {
+   "collapsible": 1,
    "fieldname": "section_break_iaj0",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Room Info"
   },
   {
    "fieldname": "amended_from",
@@ -259,6 +333,59 @@
    "label": "Price List",
    "options": "Price List",
    "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "remember_last_selected_value": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_hourly",
+   "fieldtype": "Check",
+   "label": "Is Hourly"
+  },
+  {
+   "fieldname": "actual_check_in_datetime",
+   "fieldtype": "Datetime",
+   "label": "Actual Check In",
+   "read_only": 1
+  },
+  {
+   "fieldname": "actual_check_out_datetime",
+   "fieldtype": "Datetime",
+   "label": "Actual Check Out",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "room_history",
+   "fieldtype": "Table",
+   "label": "Room History",
+   "options": "Room History"
+  },
+  {
+   "fieldname": "accompanying_persons",
+   "fieldtype": "Table",
+   "label": "Accompanying Persons",
+   "options": "Accompanying Person"
+  },
+  {
+   "fieldname": "multi_reservation_section",
+   "fieldtype": "Section Break",
+   "label": "Multi Reservation"
+  },
+  {
+   "fieldname": "column_break_uqdx",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
@@ -266,7 +393,8 @@
  "is_calendar_and_gantt": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-23 13:20:11.677340",
+ "make_attachments_public": 1,
+ "modified": "2026-06-04 17:41:34.154361",
  "modified_by": "Administrator",
  "module": "Hotel Mange",
  "name": "Reservation Room",
@@ -288,6 +416,7 @@
   }
  ],
  "row_format": "Dynamic",
+ "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [
@@ -309,12 +438,12 @@
   {
    "color": "Gray",
    "custom": 1,
-   "title": "Checked-In"
+   "title": "Checked In"
   },
   {
    "color": "Orange",
    "custom": 1,
-   "title": "Checked-out"
+   "title": "Pending Billing"
   },
   {
    "color": "Red",

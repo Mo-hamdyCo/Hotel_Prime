@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-21 10:22:37.457964",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "component",
+  "column_break_zmyx",
+  "percentage_",
+  "column_break_kkip",
+  "amount",
+  "section_break_srys",
+  "type",
+  "column_break_tmtm",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "component",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Component",
+   "options": "Salary Component"
+  },
+  {
+   "fieldname": "column_break_zmyx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "percentage_",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Percentage %"
+  },
+  {
+   "fieldname": "column_break_kkip",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount"
+  },
+  {
+   "fieldname": "section_break_srys",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Type ",
+   "options": "Deduct\nAdd"
+  },
+  {
+   "fieldname": "column_break_tmtm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Note"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-21 10:28:06.454312",
+ "modified_by": "Administrator",
+ "module": "Hotel Mange",
+ "name": "Salary Details Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
