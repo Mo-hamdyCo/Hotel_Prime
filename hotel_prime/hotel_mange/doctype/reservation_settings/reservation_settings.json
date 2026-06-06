@@ -1,0 +1,197 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-06-02 17:23:37.109509",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "standard_check_in_time",
+  "cancellation_fee_item",
+  "advance_required_role",
+  "post_check_out_room_status",
+  "column_break_fkii",
+  "standard_check_out_time",
+  "cancellation_fee_account",
+  "checkout_override_role",
+  "default_room_service_warehouse",
+  "column_break_czfe",
+  "advance_required",
+  "allow_hourly_booking",
+  "cancellation_fee_percentage",
+  "max_discount_percent",
+  "labels",
+  "busy_status_label",
+  "blocked_status_label",
+  "column_break_zlcv",
+  "maintenance_status_label",
+  "late_setting_tab",
+  "late_check_out_grace_period",
+  "late_check_out_fee_item",
+  "column_break_homt",
+  "late_check_out_hourly_rate"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "advance_required",
+   "fieldtype": "Check",
+   "label": "Advance Required"
+  },
+  {
+   "fieldname": "advance_required_role",
+   "fieldtype": "Link",
+   "label": "Advance Required Role",
+   "options": "Role"
+  },
+  {
+   "fieldname": "checkout_override_role",
+   "fieldtype": "Link",
+   "label": "Checkout Override Role",
+   "options": "Role"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_discount_percent",
+   "fieldtype": "Percent",
+   "label": "Max Discount Percent"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_hourly_booking",
+   "fieldtype": "Check",
+   "label": "Allow Hourly Booking"
+  },
+  {
+   "fieldname": "cancellation_fee_item",
+   "fieldtype": "Link",
+   "label": "Cancellation Fee Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "late_check_out_hourly_rate",
+   "fieldtype": "Currency",
+   "label": "Late Check-Out Hourly Rate"
+  },
+  {
+   "fieldname": "late_check_out_fee_item",
+   "fieldtype": "Link",
+   "label": "Late Check-Out Fee Item",
+   "options": "Item"
+  },
+  {
+   "default": "Busy",
+   "fieldname": "busy_status_label",
+   "fieldtype": "Data",
+   "label": "Busy Status Label"
+  },
+  {
+   "default": "Under Maintenance",
+   "fieldname": "maintenance_status_label",
+   "fieldtype": "Data",
+   "label": "Maintenance Status Label"
+  },
+  {
+   "default": "Blocked",
+   "fieldname": "blocked_status_label",
+   "fieldtype": "Data",
+   "label": "Blocked Status Label"
+  },
+  {
+   "description": "Default time for check-in",
+   "fieldname": "standard_check_in_time",
+   "fieldtype": "Time",
+   "label": "Standard Check-In Time"
+  },
+  {
+   "description": "Default time for check-out",
+   "fieldname": "standard_check_out_time",
+   "fieldtype": "Time",
+   "label": "Standard Check-Out Time"
+  },
+  {
+   "description": "Minutes allowed past standard checkout before charging",
+   "fieldname": "late_check_out_grace_period",
+   "fieldtype": "Int",
+   "label": "Late Check-Out Grace Period (Mins)"
+  },
+  {
+   "description": "Warehouse from which stock is deducted for services",
+   "fieldname": "default_room_service_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Room Service Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "description": "Status set to the room automatically upon check-out",
+   "fieldname": "post_check_out_room_status",
+   "fieldtype": "Select",
+   "label": "Post Check-Out Room Status",
+   "options": "Dirty\nAvailable\nUnder Disinfection"
+  },
+  {
+   "description": "Percentage charged if a paid reservation is cancelled",
+   "fieldname": "cancellation_fee_percentage",
+   "fieldtype": "Percent",
+   "label": "Cancellation Fee Percentage"
+  },
+  {
+   "description": "Income account used for cancellation fees",
+   "fieldname": "cancellation_fee_account",
+   "fieldtype": "Link",
+   "label": "Cancellation Fee Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_fkii",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_zlcv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_czfe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "labels",
+   "fieldtype": "Tab Break",
+   "label": "Labels"
+  },
+  {
+   "fieldname": "late_setting_tab",
+   "fieldtype": "Tab Break",
+   "label": "Late Setting"
+  },
+  {
+   "fieldname": "column_break_homt",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-06-04 18:06:56.822441",
+ "modified_by": "Administrator",
+ "module": "Hotel Mange",
+ "name": "Reservation Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

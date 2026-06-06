@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Y9qVElJdvI\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Hotels</span>\",\"col\":12}},{\"id\":\"urtHsojmHn\",\"type\":\"card\",\"data\":{\"card_name\":\"Main\",\"col\":4}}]",
+ "content": "[{\"id\":\"Y9qVElJdvI\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Hotels</span>\",\"col\":12}},{\"id\":\"urtHsojmHn\",\"type\":\"card\",\"data\":{\"card_name\":\"Main\",\"col\":4}},{\"id\":\"MZzDnY3BLh\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
  "creation": "2025-10-20 16:35:35.332294",
  "custom_blocks": [],
  "docstatus": 0,
@@ -31,9 +31,60 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Room",
+   "link_count": 0,
+   "link_to": "Room",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reservation Settings",
+   "link_count": 0,
+   "link_to": "Reservation Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Available Rooms",
+   "link_count": 0,
+   "link_to": "Available Rooms",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Room",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Room Financials",
+   "link_count": 0,
+   "link_to": "Room Financials",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Reservation Room",
+   "type": "Link"
   }
  ],
- "modified": "2025-10-20 16:36:19.942043",
+ "modified": "2026-06-04 18:09:22.367708",
  "modified_by": "Administrator",
  "module": "Hotel Mange",
  "name": "Hotels",
@@ -43,7 +94,7 @@
  "public": 1,
  "quick_lists": [],
  "roles": [],
- "sequence_id": 2.0,
+ "sequence_id": 3.0,
  "shortcuts": [],
  "title": "Hotels"
 }
